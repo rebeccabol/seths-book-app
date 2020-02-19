@@ -1,0 +1,245 @@
+.import-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  color: white;
+}
+
+.main-header {
+  font-size: calc(20px + 2vmin);
+  min-height: 30vh;
+  border-style: dashed;
+  vertical-align: middle;
+  animation: fadeIn ease-in 3s;
+  animation-fill-mode: forwards;
+}
+
+.main-body {
+  display: grid;
+  grid-template-rows: 20% 20% 20%;
+  min-height: 70vh;
+  align-items: stretch;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.instr {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-evenly;
+  align-items: center;
+  white-space: normal;
+  margin: 10px;
+}
+
+.step {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: lightgray;
+  color: black;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.dropdown .dropdown-content {
+  visibility: collapse;
+}
+
+.dropdown:checked .dropdown-content {
+  visibility: visible;
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+
+.left {
+  grid-area: left;
+}
+.middle {
+  grid-area: middle;
+}
+.right {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* File Upload */
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-shelf {
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  border-style: dotted;
+  width: 100%;
+  height: 50px;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  font-size: 14pt;
+  height: 100%;
+  width: 50vh;
+  border-style: dotted;
+}
+
+.dropdown .header {
+  display: grid;
+  grid-template-columns: 10% 50% 30% 10%;
+}
+
+.file {
+  display: flex;
+  flex-direction: column;
+  border-style: dotted;
+}
+
+.status {
+  position: relative;
+  text-align: center;
+}
+
+.material-icons.anim {
+  animation: spin 0.5s;
+}
+
+/* Format specifier */
+.format-shelf {
+  background-color: slategray;
+  border-style: inset;
+  border-radius: 10px;
+  min-width: 300px;
+  height: 50px;
+}
+
+.format-option {
+  font-size: 12pt;
+}
+
+.droppable {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: 0;
+  top: 10;
+  background-color: #9e9e9e;
+  border-left: 2px dotted red;
+}
+
+.draggable {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  margin: 10px auto;
+}
+
+.inProgress {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 0;
+  top: 10;
+  background-color: #eeeeee;
+  border-right: 2px dotted red;
+}
+
+/* Right */
+.btn {
+  border-radius: 10px;
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  color: white;
+  border-style: ridge;
+}
+
+.btn:hover {
+  background-color: gray;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes intervalfade {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  16% {
+    left: 0;
+    opacity: 1;
+  }
+  32% {
+    left: 0;
+    opacity: 0;
+  }
+  34% {
+    left: 50%;
+    opacity: 0;
+  }
+  50% {
+    left: 50%;
+    opacity: 1;
+  }
+  66% {
+    left: 50%;
+    opacity: 0;
+  }
+  68% {
+    left: 100%;
+    opacity: 0;
+  }
+  84% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+    bottom: 0px;
+  }
+}
