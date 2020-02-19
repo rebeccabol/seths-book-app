@@ -1,13 +1,150 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.nav {
+  display: flex;
+  flex-direction: row;
+  background-color: #575c66;
+  color: white;
+  font-size: x-large;
+  height: 5vh;
+  align-items: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav-name {
+  font-weight: bold;
+  padding-left: 5w;
+}
+
+.nav-button {
+  color: inherit;
+  font-size: large;
+  background-color: inherit;
+  border-style: none;
+  width: 10ch;
+}
+
+.nav-settings {
+  background-color: inherit;
+  color: white;
+  position: absolute;
+  right: 10px;
+  border-style: none;
+}
+
+.login {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  color: white;
+  background-color: #797c832d;
+  z-index: 1;
+}
+
+.login .h1 {
+  font-size: calc(30px + 2vmin);
+  vertical-align: middle;
+  animation: fadeIn ease-in 3s;
+  animation-fill-mode: forwards;
+}
+
+.login .h2 {
+  opacity: 0;
+  font-size: calc(5px + 2vmin);
+  font-weight: lighter;
+  min-height: 10vh;
+  vertical-align: middle;
+  animation: fadeIn ease-in 1s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  justify-content: center;
+  width: 50vh;
+  height: 5vh;
+  align-items: center;
+}
+
+.textfield {
+  height: 2.5vh;
+}
+
+.space {
+  width: 1vh;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  background-color: inherit;
+  border-style: none;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.login-btn {
+  border-radius: 5px;
+  height: 2.5vh;
+}
+
+.error {
+  color: red;
+}
+
+.btn {
+  border-radius: 10px;
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  color: white;
+  border-style: ridge;
+}
+
+.btn:hover {
+  background-color: gray;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
