@@ -8,12 +8,23 @@
   <meta name="theme-color" content="#000000" />
   <!-- icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link href="./container.css" rel="stylesheet">
   <title></title>
 </head>
 
-<body style="background-color:#282c34">
-  <div id="root"></div>
+<body style="margin:0 auto;background-image:url(library.jpg)">
+  <div class="navbar">
+    <div class="title">Bookkeeper</div>
+    <div class="main">
+      <a href="#import" class="link">Import</a>
+      <a href="#list" class="link">My Booklist</a>
+      <a href="#data" class="link">Analytics</a>
+    </div>
+    <div class="settings">
+      <button><i class="material-icons">settings</i></button>
+    </div>
+  </div>
+  <div id="root" class="main-container"></div>
 </body>
 
 </html>

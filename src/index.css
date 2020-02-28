@@ -1,34 +1,3 @@
-.nav {
-  display: flex;
-  flex-direction: row;
-  background-color: #575c66;
-  color: white;
-  font-size: x-large;
-  height: 5vh;
-  align-items: center;
-}
-
-.nav-name {
-  font-weight: bold;
-  padding-left: 5w;
-}
-
-.nav-button {
-  color: inherit;
-  font-size: large;
-  background-color: inherit;
-  border-style: none;
-  width: 10ch;
-}
-
-.nav-settings {
-  background-color: inherit;
-  color: white;
-  position: absolute;
-  right: 10px;
-  border-style: none;
-}
-
 .login {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;

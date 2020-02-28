@@ -1,37 +1,38 @@
 import React from "react";
 import { InputField } from "./inputfield.js";
 
-const instructions = "Upload previous book lists that adhere to your format.";
 export class FileUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       years: {},
-      forms: [<InputField key="uid-0" />],
-      count: 1
+      forms: [<InputField index={0} add={this.addInputField} first={true}></InputField>],
+      count: 1,
+      header : ""
     };
   }
 
   addInputField = () => {
     let arr = this.state.forms;
-    arr.push(<InputField key={this.state.count} />);
+    arr.push(<InputField index={this.state.count} add={this.addInputField} remove={this.removeInputField.bind(this, this.state.count)}/>);
     this.setState({ forms: arr, count: this.state.count + 1 });
+    this.props.onChange("opt-2-content");
   };
+
+  removeInputField = (e) => {
+    console.log(e);
+    let arr = this.state.forms;
+    arr.splice(e, 1);
+    this.setState({ forms: arr, count: this.state.count - 1 });
+    this.props.onChange("opt-2-content");
+  }
 
   render() {
     return (
-      <div className="panel">
-        <div key className="instr">
-          <div className="step">{this.props.step}</div>
-          {instructions}
-        </div>
         <div className="file-upload-container">
-          <div key="ui-3" className="input-shelf">
-            {this.state.forms}
-          </div>
-          <button onClick={this.addInputField}>add more files</button>
+          <p> Upload </p>
+            {this.state.forms.map((d) => d)}
         </div>
-      </div>
     );
   }
 }

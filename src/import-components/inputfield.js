@@ -3,18 +3,12 @@ import "./import.css";
 
 const range = possibleYears();
 const accepted = ["text", "pdf", "document"];
-const icons = {
-  failure: (
-    <i className="material-icons anim" style={{ color: "red" }}>
-      error
-    </i>
-  ),
-  success: (
-    <i className="material-icons anim" style={{ color: "green" }}>
-      check_circle
-    </i>
-  )
-};
+const success = <i className="material-icons anim" style={{ color: "green" }}>
+check_circle
+</i>;
+const failure = <i className="material-icons anim" style={{ color: "red" }}>
+error
+</i>;
 
 function possibleYears() {
   let current_yr = new Date().getFullYear();
@@ -25,9 +19,9 @@ export class InputField extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.id,
-      year: possibleYears[0],
-      progress: "success"
+      year: "",
+      status : "",
+      error: "", 
     };
   }
 
@@ -36,42 +30,48 @@ export class InputField extends React.Component {
   };
 
   onUpload = e => {
-    var el = React.findDOMNode(this);
-    setTimeout(function() {
-      el.classList.remove("class1");
-    }, 1000);
-    this.setState({ progress: "waiting" });
-    this.render();
     let file = e.target.files[0];
-    let status = "failure";
+    if (file !== undefined) {
+    let status = failure,
+    error="Must be .pdf, .docx, or .txt file";
     accepted.forEach(t => {
       if (file.type.includes(t)) {
-        status = "success";
+        status = success;
+        error = "";
       }
     });
-    this.setState({ progress: status });
-    console.log(status);
+    this.setState({ status: status, error : error });
   };
+  }
 
   render() {
-    console.log(this.state.progress);
     return (
-      <div className="input-container">
-        <select className="dropdown" onChange={this.updateYear}>
+      <div className="upload-entry">
+        <div className="upload-form">
+          <div className="status">{this.state.status}</div>
+        <select id={this.id} className="dropdown" onChange={this.updateYear}>
+          <option value="year" selected>Year</option>
           {range.map(i => (
             <option key={i}>{i}</option>
           ))}
         </select>
-        <div className="file">
-          hello
+
           <input
+            id={this.id}
             type="file"
-            className="file"
             onChange={this.onUpload.bind(this)}
           />
+        <span className="error">{this.state.error}</span>
         </div>
-        <div className="status">{icons[this.state.progress]}</div>
-      </div>
+        {this.props.first ? 
+        <button className="file-upload-add" onClick={this.props.add}>
+          <i className="material-icons add">add_circle</i>
+        </button>
+        : <div className="file-upload-add" onClick={this.props.remove}>
+          <i className="material-icons remove">remove_circle</i>
+        </div>
+  }
+        </div>
     );
   }
 }

@@ -1,180 +1,363 @@
 .import-container {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin: 10px;
   align-items: center;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+  grid-template-columns: 50% 40%;
+  grid-template-rows: 10% auto;
+  grid-template-areas: 
+  "header header"
+  "cen r";
+}
+
+@media only screen and (max-width: 1000px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.header {
+  grid-area: header;
   justify-content: center;
   text-align: center;
-  min-height: 100vh;
+  padding: 10px;
+}
+
+.collapsible {
+  position: relative;
+  background-color: #84ceeb;
   color: white;
-}
-
-.main-header {
-  font-size: calc(20px + 2vmin);
-  min-height: 30vh;
-  border-style: dashed;
-  vertical-align: middle;
-  animation: fadeIn ease-in 3s;
-  animation-fill-mode: forwards;
-}
-
-.main-body {
-  display: grid;
-  grid-template-rows: 20% 20% 20%;
-  min-height: 70vh;
-  align-items: stretch;
-}
-
-.panel {
-  display: grid;
-  grid-template-columns: 20% 80%;
-}
-
-.instr {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  justify-content: space-evenly;
-  align-items: center;
-  white-space: normal;
-  margin: 10px;
-}
-
-.step {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: lightgray;
-  color: black;
-  font-size: 12pt;
+  padding: 18px;
+  width: 90%;
+  max-width: 50vh;
+  border: none;
+  text-align: left;
   font-weight: bold;
+  outline: none;
+  font-size: 15px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
-.dropdown .dropdown-content {
-  visibility: collapse;
+.active, .collapsible:hover {
+  background-color: gray;
 }
 
-.dropdown:checked .dropdown-content {
-  visibility: visible;
+.collapsible::after {
+  font-family: "Material Icons";
+  content: 'arrow_drop_down';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
 }
 
-.item {
-  width: 50px;
-  height: 50px;
+.active:after {
+  font-family: "Material Icons";
+  content: 'arrow_drop_up';
+}
+
+.content {
+  max-height: 0;
+  width: 90%;
+  max-width: 50vh;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
   background-color: white;
+  background-blend-mode: overlay;
+  border-color: lightsteelblue;
+  border-width: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-.left {
-  grid-area: left;
-}
-.middle {
-  grid-area: middle;
-}
-.right {
-  grid-area: right;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-/* File Upload */
 .file-upload-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.input-shelf {
-  grid-area: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.input {
+.upload-form {
   display: flex;
   flex-direction: row;
-  border-style: dotted;
+  margin-bottom: 10px;
   width: 100%;
-  height: 50px;
+  height: 30px;
+  border-width: 10px;
+  border-color: gray;
+  border-radius: 5px;
+  align-items: center;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
+
+.upload-entry {
+  display: flex;
+  flex-direction: row;
+}
+
+.file-upload-add {
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  align-self: flex-end;
+  max-width: min-content;
+  max-height: min-content;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+button {
+  margin: 0px;
+  padding: 0px;
+}
+
+.material-icons.add {
+  color: green;
+}
+
+.material-icons.remove {
+  color:red;
+}
+
 
 .dropdown {
-  display: flex;
-  flex-direction: column;
-  font-size: 14pt;
-  height: 100%;
-  width: 50vh;
-  border-style: dotted;
-}
-
-.dropdown .header {
-  display: grid;
-  grid-template-columns: 10% 50% 30% 10%;
-}
-
-.file {
-  display: flex;
-  flex-direction: column;
-  border-style: dotted;
+  height: 20px;
+  margin: 5px;
 }
 
 .status {
   position: relative;
   text-align: center;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.error {
+  font-size: 8pt;
+  color: red;
+  margin-right: 10px;
 }
 
 .material-icons.anim {
   animation: spin 0.5s;
 }
 
-/* Format specifier */
-.format-shelf {
-  background-color: slategray;
-  border-style: inset;
-  border-radius: 10px;
-  min-width: 300px;
-  height: 50px;
+.format {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-stretch: narrower;
 }
 
-.format-option {
+.draggable {
+  display: flex;
+  flex-direction: row;
+  margin: 30px 4px 20px 4px;
+  height: 50px;
   font-size: 12pt;
 }
 
 .droppable {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  right: 0;
-  top: 10;
-  background-color: #9e9e9e;
-  border-left: 2px dotted red;
-}
-
-.draggable {
-  width: 100px;
-  height: 100px;
-  background-color: yellow;
-  margin: 10px auto;
-}
-
-.inProgress {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  left: 0;
-  top: 10;
-  background-color: #eeeeee;
-  border-right: 2px dotted red;
-}
-
-/* Right */
-.btn {
+  display: flex;
+  border: 1px solid gray;
+  align-self: center;
+  justify-content: center;
+  background: white;
   border-radius: 10px;
-  background-color: black;
-  height: 50px;
-  width: 200px;
+  border-width: 1px;
+  padding: 8px;
+  width: 450px;
   color: white;
-  border-style: ridge;
+  overflow: auto;
+}
+
+.format-btn{
+  position: relative;
+  display: inline-block;
+  background-color: #00C3A6;
+  cursor: pointer;
+  width: 20px;
+  height: 50px;
+  color:white;
+  text-align: center;
+  outline: none;
+}
+
+.format-btn .tooltip {
+  visibility: hidden;
+  width: 50px;
+  background-color: #84ceeb;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px;
+  position: absolute;
+  z-index: 1;
+  top: -80%;
+  left: -20px;
+  overflow-y: visible;
+}
+
+.format-btn .tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #84ceeb transparent transparent transparent;
+}
+
+.punc-container {
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgba(122, 122, 200, 0.12);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  width: 20px;
+  height: 50px;
+  position: absolute;
+}
+
+.punc-container.enabled {
+  visibility: unset;
+}
+
+.punc {
+  width: 8px;
+  height: 20px;
+  resize: none;
+  font-size: large;
+}
+
+.material-icons.md {
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+.format-tmp-btn:active {
+  border-color: #84ceeb;
+}
+
+.format-btn:hover .tooltip{
+  visibility: visible;
+}
+
+.material-icons.select {
+  font-size: 10pt;
+  color: white;
+  font-weight: bold;
+}
+
+.format-opts {
+  display: flex;
+  background-color: inherit;
+  height: 50px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 8px;
+  margin: 3px;
+
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  margin: 1px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom: 0;
+  border-radius: 10px;
+  background-color: lightslategray;
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 1;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 0px;
+  top: -3px;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch .tooltip {
+  visibility: hidden;
+  width: max-content;
+  font-size: 8pt;
+  background-color: #84ceeb;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  left: -80%;
+}
+
+.switch .tooltip::before {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color:transparent  transparent #84ceeb transparent;
+}
+
+.switch:hover .tooltip{
+  visibility: visible;
+
+}
+
+input:checked + .slider:before {
+  background-color: #2196F3;
+}
+
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(24px);
+  transform: translateX(18px);
 }
 
 .btn:hover {
