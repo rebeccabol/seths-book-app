@@ -2,19 +2,19 @@
   font-family: Arial, Helvetica, sans-serif;
   display: grid;
   grid-template-columns: min-content auto min-content;
-  grid-template-areas:
-  "l mid r";
+  grid-template-areas: "l mid r";
   background-color: #575c66;
   color: white;
   font-size: x-large;
   height: 5vh;
   margin: 0 auto;
   align-items: center;
+  width: 100%;
 }
 
 .navbar .title {
   grid-area: l;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: bolder;
   font-stretch: ultra-condensed;
   margin: 0px 20px 0px 20px;
@@ -27,40 +27,39 @@
 }
 
 .navbar .link {
-  color:white;
+  color: white;
   font-size: large;
   text-decoration: none;
   padding: 10px;
   margin: 5px;
-  border:none;
+  border: none;
   position: relative;
 }
 
 a:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 90%;
-    height: 2px;
-    bottom: 0px;
-    left: 5%;
-    background-color: white;
-    -webkit-transform: scaleX(0);
-    -ms-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: -webkit-transform 0.2s ease-in;
-    transition: transform 0.2s ease-in;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 90%;
+  height: 2px;
+  bottom: 0px;
+  left: 5%;
+  background-color: white;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
 }
 
 a.link:focus:after {
-    -webkit-transform: scaleX(1);
-    -ms-transform: scaleX(1);
-    transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 a.link:hover {
   font-weight: bolder;
-
 }
 .navbar .settings {
   grid-area: r;
@@ -71,7 +70,7 @@ a.link:hover {
 }
 
 button {
-  background-color:#575c66;
+  background-color: #575c66;
   border: none;
   color: white;
   outline-color: white;
@@ -116,5 +115,6 @@ button {
   height: 90vh;
   margin: 2vh auto;
   justify-content: center;
-  max-width: 95vh;
+  align-items: center;
+  max-width: 95vh !important;
 }
